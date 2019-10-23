@@ -1,4 +1,6 @@
 import React from 'react';
+import { DatePicker } from 'antd';
+import 'antd/dist/antd.css';
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+        <DatePicker />
       </header>
     </div>
   );
