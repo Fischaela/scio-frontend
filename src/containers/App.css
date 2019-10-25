@@ -1,0 +1,56 @@
+.ant-layout-content {
+  /* minus header and footer height */
+  min-height: calc(100vh - 64px - 69px);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0.5rem;
+}
+
+@media screen and (min-width: 400px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .cards {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 1rem 2.625rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 1rem 2.625rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 1rem 2.625rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 1rem 2.625rem;
+  }
+}

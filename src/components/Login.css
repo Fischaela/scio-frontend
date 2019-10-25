@@ -1,0 +1,35 @@
+.login {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login__aside {
+  background-color: #21242d;
+  flex-grow: 1;
+}
+
+.login__main {
+  align-items: center;
+  background-color: #f4f6fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.login__main__footer {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.login__main__tab {
+  margin: 0.5rem 0;
+}
+
+.login__main__tabs {
+  margin: 1rem 0 0 0;
+  width: 100%;
+}

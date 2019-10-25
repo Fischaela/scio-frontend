@@ -1,0 +1,11 @@
+.ant-card-body {
+  padding: 1rem;
+}
+
+.card {
+  margin: 0.5rem;
+}
+
+.card__title {
+  margin: 0;
+}
