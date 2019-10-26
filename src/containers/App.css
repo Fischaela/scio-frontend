@@ -54,3 +54,13 @@
     padding: 1rem 2.625rem;
   }
 }
+
+.footer {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

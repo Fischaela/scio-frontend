@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Input, Tabs, Typography } from 'antd';
+import { Button, Checkbox, Icon, Input, Form, Typography } from 'antd';
 import './Login.css';
 
-const { TabPane } = Tabs;
 const { Text, Title } = Typography;
 
 class Login extends Component {
@@ -12,25 +11,31 @@ class Login extends Component {
       <div className="login">
         <section className="login__main">
           <Title level={1}>Welcome to Shortcut.io</Title>
-          <Tabs className="login__main__tabs" defaultActiveKey="1">
-            <TabPane className="tab" tab="Login" key="1">
-              <Input addonBefore="Email address" className="input" placeholder="Email address" />
-              <br /><br />
-              <Input.Password addonBefore="Password" className="input" placeholder="Password" />
-              <br /><br />
-              <Button type="primary" onClick={this.props.login}>Login</Button>
-            </TabPane>
-            <TabPane className="login__main__tab" tab="Sign up" key="2">
-              <Input addonBefore="Email address" className="input" placeholder="Email address" />
-              <br /><br />
-              <Input.Password addonBefore="Password" className="input" placeholder="Password" />
-              <br /><br />
-              <Input.Password addonBefore="Repeat password" className="input" placeholder="Password" />
-              <br /><br />
-              <Button type="primary">Sign up</Button>
-            </TabPane>
-          </Tabs>
-          <Text className="login__main__footer"><a href="#">Forgot password</a> | <a href="#">Imprint</a></Text>
+          <Form onSubmit={this.props.login} className="login__form">
+            <Form.Item>
+              <Input
+                className="input"
+                placeholder="Email address or user name"
+                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              />
+            </Form.Item>
+            <Form.Item>
+              <Input.Password
+                className="input" 
+                placeholder="Password"
+                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              />
+            </Form.Item>
+            <Form.Item>
+              <Checkbox>Remember me</Checkbox>
+              <a className="login__form__forgot" href="">
+                Forgot password
+              </a>
+              <Button className="login__form__button" type="primary" htmlType="submit">Login</Button>
+              Or <a href="">register now!</a>
+            </Form.Item>
+          </Form>
+          <Text className="login__main__footer">Shortcut.io © 2019 Created by | <a href="#">Imprint</a></Text>
         </section>
         <section className="login__aside"></section>
       </div>
