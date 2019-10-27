@@ -28,14 +28,14 @@ class Login extends Component {
             </Form.Item>
             <Form.Item>
               <Checkbox>Remember me</Checkbox>
-              <a className="login__form__forgot" href="">
+              <a className="login__form__forgot" href="/forgot-password">
                 Forgot password
               </a>
               <Button className="login__form__button" type="primary" htmlType="submit">Login</Button>
-              Or <a href="">register now!</a>
+              Or <a href="/register">register now!</a>
             </Form.Item>
           </Form>
-          <Text className="login__main__footer">Shortcut.io © 2019 Created by | <a href="#">Imprint</a></Text>
+          <Text className="login__main__footer">Shortcut.io © 2019 Created by | <a href="/imprint">Imprint</a></Text>
         </section>
         <section className="login__aside"></section>
       </div>
