@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import { Button, Form, Input, Layout, Modal, Select } from 'antd';
+import { Button, Layout, Modal } from 'antd';
 
 import './App.css';
 import BookmarkCard from '../components/BookmarkCard'
+import BookmarkForm from '../components/BookmarkForm'
 
 const { Header, Content, Footer } = Layout;
 
@@ -97,32 +98,17 @@ class App extends Component {
     return (
       <Layout className="layout">
         <Modal
+          confirmLoading={this.state.confirmLoading}
+          onCancel={this.handleCancel}
+          onOk={this.handleOk}
           title="Add new bookmark"
           visible={this.state.modalVisible}
-          confirmLoading={this.state.confirmLoading}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
         >
-          <Form layout="vertical">
-            <Form.Item label="URL">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Tags">
-              <Select
-                mode="tags"
-                placeholder="Select tags"
-                value={this.state.selectedItems}
-                onChange={this.handleTagChange}
-                style={{ width: '100%' }}
-              >
-                {filteredOptions.map(item => (
-                  <Select.Option key={item} value={item}>
-                    {item}
-                  </Select.Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Form>
+          <BookmarkForm
+            filteredOptions={filteredOptions}
+            handleTagChange={this.handleTagChange}
+            selectedItems={this.state.selectedItems}
+          />
         </Modal>
         <Header className="header">
           <Button type="primary" onClick={this.showModal}>New Bookmark</Button>
