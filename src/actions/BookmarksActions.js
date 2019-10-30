@@ -1,12 +1,24 @@
 import { API_URL } from '../config'
 import {
-  GET_BOOKMARKS_ERROR,
-  GET_BOOKMARKS_REQUEST,
-  GET_BOOKMARKS_SUCCESS,
   CREATE_BOOKMARK_REQUEST,
   CREATE_BOOKMARK_SUCCESS,
   CREATE_BOOKMARK_ERROR,
+  GET_BOOKMARKS_ERROR,
+  GET_BOOKMARKS_REQUEST,
+  GET_BOOKMARKS_SUCCESS,
 } from './types'
+
+export const createBookmarkRequest = () => ({
+  type: CREATE_BOOKMARK_REQUEST,
+})
+
+export const createBookmarkSuccess = () => ({
+  type: CREATE_BOOKMARK_SUCCESS,
+})
+
+export const createBookmarkError = () => ({
+  type: CREATE_BOOKMARK_ERROR,
+})
 
 export const getBookmarksRequest = () => ({
   type: GET_BOOKMARKS_REQUEST,
@@ -21,18 +33,6 @@ export const getBookmarksError = () => ({
   type: GET_BOOKMARKS_ERROR,
 })
 
-export const createBookmarkRequest = () => ({
-  type: CREATE_BOOKMARK_REQUEST,
-})
-
-export const createBookmarkSuccess = () => ({
-  type: CREATE_BOOKMARK_SUCCESS,
-})
-
-export const createBookmarkError = () => ({
-  type: CREATE_BOOKMARK_ERROR,
-})
-
 /**
  * ASYNC ACTIONS
  */
@@ -44,7 +44,7 @@ export const addBookmark = (bookmark) => {
       description: bookmark.description,
       title: bookmark.title,
       url: bookmark.url,
-      tags: ['tag'],
+      tags: bookmark.tags || [],
     }
     return fetch(`${API_URL}/shortcuts`, {
       body: JSON.stringify(data),

@@ -6,6 +6,7 @@ import './Home.css'
 
 import { login, logout, register } from '../actions/SessionActions'
 import { addBookmark, getBookmarks } from '../actions/BookmarksActions'
+import { getTags } from '../reducers/BookmarksReducer'
 import App from './App'
 import Login from '../components/Login'
 
@@ -39,6 +40,7 @@ class Home extends Component {
             newBookmarkState={this.props.newBookmarkState}
             bookmarks={this.props.bookmarks}
             logout={this.props.handleLogout}
+            tags={this.props.tags}
           />
         }
       </div>
@@ -55,6 +57,7 @@ Home.propTypes = {
   handleLogout: PropTypes.func,
   handleRegister: PropTypes.func,
   sessionState: PropTypes.string,
+  tags: PropTypes.array,
 }
 
 Home.defaultProps = {
@@ -66,10 +69,12 @@ Home.defaultProps = {
   handleLogout: undefined,
   handleRegister: undefined,
   sessionState: 'UNKNOWN',
+  tags: undefined,
 }
 
 const mapDispatchToProps = (dispatch) => ({
   addBookmark: (bookmark) => {
+    console.log('2', bookmark)
     dispatch(addBookmark(bookmark))
   },
   getBookmarks: () => {
@@ -90,6 +95,7 @@ const mapStateToProps = (state) => ({
   bookmarks: state.Bookmarks.bookmarks,
   newBookmarkState: state.Bookmarks.newBookmarkState,
   sessionState: state.Session.state,
+  tags: getTags(state),
 })
 
 export default connect(

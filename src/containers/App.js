@@ -14,16 +14,11 @@ class App extends Component {
     this.state = {
       confirmLoading: false,
       modalVisible: false,
+      selectedItems: [],
       selectedTags: [],
       newBookmarkDescription: '',
       newBookmarkTitle: '',
       newBookmarkUrl: '',
-      tags: [
-        'blue',
-        'geekblue',
-        'lime',
-        'magenta',
-      ],
     }
     this.handleNewBookmarkChange = this.handleNewBookmarkChange.bind(this)
   }
@@ -41,7 +36,7 @@ class App extends Component {
   }
 
   handleTagChange = selectedItems => {
-    this.setState({ selectedItems });
+    this.setState({ selectedItems })
   }
 
   handleOk = e => {
@@ -51,14 +46,16 @@ class App extends Component {
       description: this.state.newBookmarkDescription,
       title: this.state.newBookmarkTitle,
       url: this.state.newBookmarkUrl,
+      tags: this.state.selectedItems,
     })
     setTimeout(() => {
       this.setState({
         confirmLoading: false,
         modalVisible: false,
-        description: '',
-        title: '',
-        url: '',
+        newBookmarkDescription: '',
+        newBookmarkTitle: '',
+        newBookmarkUrl: '',
+        selectedItems: [],
       });
     }, 500);
   }
@@ -70,7 +67,7 @@ class App extends Component {
   }
 
   render() {
-    const filteredOptions = this.state.tags.filter(o => !this.state.selectedTags.includes(o))
+    const filteredOptions = this.props.tags.filter(o => !this.state.selectedTags.includes(o))
 
     return (
       <Layout className="layout">
@@ -90,6 +87,7 @@ class App extends Component {
               description: this.state.newBookmarkDescription,
               title: this.state.newBookmarkTitle,
               url: this.state.newBookmarkUrl,
+              tags: this.state.selectedItems,
             }}
           />
         </Modal>

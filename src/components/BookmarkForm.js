@@ -4,13 +4,6 @@ import { Form, Input, Select } from 'antd';
 import './BookmarkForm.css';
 
 class BookmarkForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      tags: [],
-    }
-  }
-
   render() {
     return (
       <Form layout="vertical">
