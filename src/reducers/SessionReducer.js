@@ -20,7 +20,7 @@ const reducer = (store = defaultStore, action) => {
   switch (action.type) {
   case 'INITIALISE_SESSION':
     let state = UNKNOWN
-    if (localStorage.getItem(SCIO_LOCALSTORAGE_ID)) {
+    if (localStorage.getItem(SCIO_LOCALSTORAGE_ID) === 'LOGGED_IN') {
       state = LOGGED_IN
     }
     return {...store, state: state}
