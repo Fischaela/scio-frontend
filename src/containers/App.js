@@ -15,6 +15,9 @@ class App extends Component {
       confirmLoading: false,
       modalVisible: false,
       selectedTags: [],
+      newBookmarkDescription: '',
+      newBookmarkTitle: '',
+      newBookmarkUrl: '',
       tags: [
         'blue',
         'geekblue',
@@ -22,10 +25,16 @@ class App extends Component {
         'magenta',
       ],
     }
+    this.handleNewBookmarkChange = this.handleNewBookmarkChange.bind(this)
+  }
+
+  handleNewBookmarkChange(event, type) {
+    this.setState({
+      [type]: event.target.value,
+    })
   }
 
   handleCancel = e => {
-    console.log(e);
     this.setState({
       modalVisible: false,
     })
@@ -36,16 +45,22 @@ class App extends Component {
   }
 
   handleOk = e => {
-    console.log(e);
-    this.setState({
-      confirmLoading: true,
-    });
+    e.preventDefault()
+    this.setState({ confirmLoading: true })
+    this.props.addBookmark({
+      description: this.state.newBookmarkDescription,
+      title: this.state.newBookmarkTitle,
+      url: this.state.newBookmarkUrl,
+    })
     setTimeout(() => {
       this.setState({
-        modalVisible: false,
         confirmLoading: false,
+        modalVisible: false,
+        description: '',
+        title: '',
+        url: '',
       });
-    }, 2000);
+    }, 500);
   }
 
   showModal = () => {
@@ -70,6 +85,12 @@ class App extends Component {
             filteredOptions={filteredOptions}
             handleTagChange={this.handleTagChange}
             selectedItems={this.state.selectedItems}
+            handleChange={this.handleNewBookmarkChange}
+            bookmark={{
+              description: this.state.newBookmarkDescription,
+              title: this.state.newBookmarkTitle,
+              url: this.state.newBookmarkUrl,
+            }}
           />
         </Modal>
         <Header className="header">

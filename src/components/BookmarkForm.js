@@ -4,18 +4,33 @@ import { Form, Input, Select } from 'antd';
 import './BookmarkForm.css';
 
 class BookmarkForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      tags: [],
+    }
+  }
 
   render() {
     return (
       <Form layout="vertical">
         <Form.Item label="URL">
-          <Input />
+          <Input
+            onChange={(e) => this.props.handleChange(e, 'newBookmarkUrl')}
+            value={this.props.bookmark.url || ''}
+          />
         </Form.Item>
         <Form.Item label="Title">
-          <Input />
+          <Input
+            onChange={(e) => this.props.handleChange(e, 'newBookmarkTitle')}
+            value={this.props.bookmark.title || ''}
+          />
         </Form.Item>
         <Form.Item label="Description">
-          <Input />
+          <Input
+            onChange={(e) => this.props.handleChange(e, 'newBookmarkDescription')}
+            value={this.props.bookmark.description || ''}
+          />
         </Form.Item>
         <Form.Item label="Tags">
           <Select

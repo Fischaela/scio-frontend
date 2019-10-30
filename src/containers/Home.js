@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import './Home.css'
 
 import { login, logout, register } from '../actions/SessionActions'
-import { getBookmarks } from '../actions/BookmarksActions'
+import { addBookmark, getBookmarks } from '../actions/BookmarksActions'
 import App from './App'
 import Login from '../components/Login'
 
@@ -35,6 +35,8 @@ class Home extends Component {
         }
         { this.props.sessionState === 'LOGGED_IN' &&
           <App
+            addBookmark={this.props.addBookmark}
+            newBookmarkState={this.props.newBookmarkState}
             bookmarks={this.props.bookmarks}
             logout={this.props.handleLogout}
           />
@@ -45,6 +47,8 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+  addBookmark: PropTypes.func,
+  newBookmarkState: PropTypes.string,
   bookmarks: PropTypes.array,
   getBookmarks: PropTypes.func,
   handleLogin: PropTypes.func,
@@ -54,6 +58,8 @@ Home.propTypes = {
 }
 
 Home.defaultProps = {
+  addBookmark: undefined,
+  newBookmarkState: 'UNKNOWN',
   bookmarks: null,
   getBookmarks: undefined,
   handleLogin: undefined,
@@ -63,6 +69,9 @@ Home.defaultProps = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  addBookmark: (bookmark) => {
+    dispatch(addBookmark(bookmark))
+  },
   getBookmarks: () => {
     dispatch(getBookmarks())
   },
@@ -79,6 +88,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   bookmarks: state.Bookmarks.bookmarks,
+  newBookmarkState: state.Bookmarks.newBookmarkState,
   sessionState: state.Session.state,
 })
 

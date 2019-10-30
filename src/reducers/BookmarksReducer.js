@@ -9,8 +9,8 @@ import {
 
 const defaultStore = {
   bookmarks: null,
-  bookmarksState: undefined,
-  newBookmarkState: undefined,
+  bookmarksState: 'UNDEFINED',
+  newBookmarkState: 'UNDEFINED',
 }
 
 const reducer = (store = defaultStore, action) => {
