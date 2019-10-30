@@ -23,6 +23,10 @@ class App extends Component {
     this.handleNewBookmarkChange = this.handleNewBookmarkChange.bind(this)
   }
 
+  handleBookmarkClick(e, bookmark) {
+    window.open(bookmark.url, '_blank')
+  }
+
   handleNewBookmarkChange(event, type) {
     this.setState({
       [type]: event.target.value,
@@ -99,7 +103,7 @@ class App extends Component {
           { this.props.bookmarks &&
             <section className="cards">
               { this.props.bookmarks.map((card) =>
-                <BookmarkCard data={card} key={card.id} />
+                <BookmarkCard handleClick={this.handleBookmarkClick} data={card} key={card.id} />
               )}
             </section>
           }

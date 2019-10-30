@@ -10,6 +10,7 @@ class BookmarkCard extends Component {
   render() {
     return (
       <Card
+        onClick={(e) => this.props.handleClick(e, this.props.data)}
         className="card"
         hoverable
         cover={<div alt="example" className="card__cover" style={this.props.data.screenshot_id ? {backgroundImage: `url(${this.props.data.screenshot_id})`} : {backgroundImage: 'none'}}></div>}
