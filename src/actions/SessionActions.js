@@ -4,13 +4,16 @@ import {
   INITIALISE_SESSION,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_REQUEST,
   SESSION_ERROR,
   SET_SESSION_STATE,
 } from './types'
+
+import {
+  SCIO_LOCALSTORAGE_ID,
+} from '../config'
 
 export const initialiseSession = (wasRedirected = false) => ({
   payload: wasRedirected,
@@ -26,12 +29,7 @@ export const loginSuccess = (json) => ({
   type: LOGIN_SUCCESS,
 })
 
-export const logoutRequest = () => ({
-  type: LOGOUT_REQUEST,
-})
-
-export const logoutSuccess = (json) => ({
-  payload: json,
+export const logout = () => ({
   type: LOGOUT_SUCCESS,
 })
 
@@ -60,7 +58,6 @@ export const setSessionState = (newState) => ({
  */
 
 export const login = (emailAddress, password) => {
-  console.log('!')
   return (dispatch) => {
     dispatch(loginRequest())
     const data = {
@@ -80,9 +77,10 @@ export const login = (emailAddress, password) => {
       .then(() => (
         dispatch(getBookmarks())
       ))
-      .then(() => (
-        dispatch(loginSuccess())
-      ))
+      .then(() => {
+        localStorage.setItem(SCIO_LOCALSTORAGE_ID, 'LOGGED_IN')
+        return dispatch(loginSuccess())
+      })
       .catch((error) => (
         dispatch(sessionError(error))
       ))

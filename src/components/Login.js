@@ -103,7 +103,7 @@ class Login extends Component {
               }
             </Form.Item>
           </Form>
-          <Text className="login__main__footer">Shortcut.io © 2019 Created by | <a href="/imprint">Imprint</a></Text>
+          <Text className="login__main__footer">Shortcut.io © 2019 | <a href="/imprint">Imprint</a></Text>
         </section>
         <section className="login__aside"></section>
       </div>

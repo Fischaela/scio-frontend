@@ -8,6 +8,7 @@ const { Paragraph } = Typography;
 class BookmarkCard extends Component {
 
   render() {
+    console.log(document.cookie.indexOf('session'))
     return (
       <Card
         className="card"

@@ -5,10 +5,17 @@ import { connect } from 'react-redux'
 import './Home.css'
 
 import { login, logout, register } from '../actions/SessionActions'
+import { getBookmarks } from '../actions/BookmarksActions'
 import App from './App'
 import Login from '../components/Login'
 
 class Home extends Component {
+  componentDidMount = () => {
+    if (this.props.sessionState === 'LOGGED_IN' && !this.props.bookmarks) {
+      this.props.getBookmarks();
+    }
+  }
+
   handleLogin = (email, password) => {
     this.props.handleLogin(email, password)
   }
@@ -39,6 +46,7 @@ class Home extends Component {
 
 Home.propTypes = {
   bookmarks: PropTypes.array,
+  getBookmarks: PropTypes.func,
   handleLogin: PropTypes.func,
   handleLogout: PropTypes.func,
   handleRegister: PropTypes.func,
@@ -47,6 +55,7 @@ Home.propTypes = {
 
 Home.defaultProps = {
   bookmarks: null,
+  getBookmarks: undefined,
   handleLogin: undefined,
   handleLogout: undefined,
   handleRegister: undefined,
@@ -54,11 +63,14 @@ Home.defaultProps = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  getBookmarks: () => {
+    dispatch(getBookmarks())
+  },
   handleLogin: (email, password) => {
     dispatch(login(email, password))
   },
   handleLogout: () => {
-    // dispatch(logout())
+    dispatch(logout())
   },
   handleRegister: (email, username, password) => {
     dispatch(register(email, username, password))

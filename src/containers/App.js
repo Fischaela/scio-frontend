@@ -85,7 +85,7 @@ class App extends Component {
             </section>
           }
         </Content>
-        <Footer className="footer">Shortcut.io © 2019 Created by | <a href="/imprint">Imprint</a></Footer>
+        <Footer className="footer">Shortcut.io © 2019 | <a href="/imprint">Imprint</a></Footer>
       </Layout>
     );
   }
