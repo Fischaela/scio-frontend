@@ -19,8 +19,6 @@ const reducer = (store = defaultStore, action) => {
     return {...store, state: state}
   case 'LOGIN_SUCCESS':
     return {...store, state: LOGGED_IN}
-  case 'LOGOUT_SUCCESS':
-    return {...store, state: REGISTERED}
   case 'LOGIN_REQUEST':
     return {...store, state: LOGIN_IN_PROGRESS}
   case 'REGISTER_SUCCESS':

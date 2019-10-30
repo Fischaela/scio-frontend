@@ -28,6 +28,7 @@ class Home extends Component {
         }
         { this.props.sessionState === 'LOGGED_IN' &&
           <App
+            bookmarks={this.props.bookmarks}
             logout={this.props.handleLogout}
           />
         }
@@ -37,6 +38,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+  bookmarks: PropTypes.array,
   handleLogin: PropTypes.func,
   handleLogout: PropTypes.func,
   handleRegister: PropTypes.func,
@@ -44,6 +46,7 @@ Home.propTypes = {
 }
 
 Home.defaultProps = {
+  bookmarks: null,
   handleLogin: undefined,
   handleLogout: undefined,
   handleRegister: undefined,
@@ -55,7 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(login(email, password))
   },
   handleLogout: () => {
-    dispatch(logout())
+    // dispatch(logout())
   },
   handleRegister: (email, username, password) => {
     dispatch(register(email, username, password))
@@ -63,6 +66,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
+  bookmarks: state.Bookmarks.bookmarks,
   sessionState: state.Session.state,
 })
 

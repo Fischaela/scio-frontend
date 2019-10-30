@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Tag, Typography } from 'antd';
+import { Card, Icon, Tag, Typography } from 'antd';
 
 import './BookmarkCard.css';
 
@@ -12,12 +12,13 @@ class BookmarkCard extends Component {
       <Card
         className="card"
         hoverable
-        cover={<img alt="example" src={this.props.data.image} />}
+        cover={<div alt="example" className="card__cover" style={this.props.data.screenshot_id ? {backgroundImage: `url(${this.props.data.screenshot_id})`} : {backgroundImage: 'none'}}></div>}
       >
         <p className="card__title">{this.props.data.title}</p>
+        <p className="card__description">{this.props.data.description}</p>
         <Paragraph copyable className="card__url">{this.props.data.url}</Paragraph>
         { this.props.data.tags.map((tag) =>
-          <Tag color={tag.color} key={tag.id}>{tag.label}</Tag>
+          <Tag color={'magenta'} key={tag}>{tag}</Tag>
         )}
       </Card>
     );

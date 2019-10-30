@@ -1,4 +1,5 @@
 import { API_URL } from '../config'
+import { getBookmarks } from './BookmarksActions'
 import {
   INITIALISE_SESSION,
   LOGIN_REQUEST,
@@ -76,36 +77,15 @@ export const login = (emailAddress, password) => {
       method: 'POST',
       mode: 'no-cors',
     })
-      .then((json) => {
-        return dispatch(loginSuccess(json))
-      })
-      .catch((error) => {
+      .then(() => (
+        dispatch(getBookmarks())
+      ))
+      .then(() => (
+        dispatch(loginSuccess())
+      ))
+      .catch((error) => (
         dispatch(sessionError(error))
-      })
-  }
-}
-
-export const logout = () => {
-  return (dispatch) => {
-    dispatch(logoutRequest())
-    return fetch(`${API_URL}`, {
-      'cache-control': 'no-cache',
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json',
-      },
-      method: 'DELETE',
-      mode: 'no-cors',
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(json => {
-        return dispatch(logoutSuccess(json))
-      })
-      .catch((error) => {
-        dispatch(sessionError(error))
-      })
+      ))
   }
 }
 
@@ -117,7 +97,6 @@ export const register = (emailAddress, username, password) => {
       password: password,
       username: username,
     }
-    console.log(JSON.stringify(data), emailAddress, username, password)
     return fetch(`${API_URL}/users`, {
       body: JSON.stringify(data),
       'cache-control': 'no-cache',
@@ -127,12 +106,14 @@ export const register = (emailAddress, username, password) => {
       method: 'POST',
       mode: 'no-cors',
     })
-      .then(response => {
-        return response.json()
-      })
-      .then(json => dispatch(registerSuccess(json)))
-      .catch((error) => {
+      .then((response) => (
+        response.json()
+      ))
+      .then((json) => (
+        dispatch(registerSuccess(json))
+      ))
+      .catch((error) => (
         dispatch(sessionError(error))
-      })
+      ))
   }
 }

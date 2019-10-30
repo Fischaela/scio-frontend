@@ -12,44 +12,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cards: [
-        {
-          id: 0,
-          image: 'https://picsum.photos/400/300',
-          tags: [
-            {
-              color: 'magenta',
-              id: 0,
-              label: 'Magenta',
-            },
-            {
-              color: 'lime',
-              id: 1,
-              label: 'Lime',
-            }
-          ],
-          title: 'Website Title',
-          url: 'https://geildanke.com',
-        },
-        {
-          id: 1,
-          image: 'https://picsum.photos/400/300',
-          tags: [
-            {
-              color: 'lime',
-              id: 0,
-              label: 'Lime',
-            },
-            {
-              color: 'geekblue',
-              id: 1,
-              label: 'Geekblue',
-            }
-          ],
-          title: 'Website Title',
-          url: 'https://geildanke.com',
-        },
-      ],
       confirmLoading: false,
       modalVisible: false,
       selectedTags: [],
@@ -115,11 +77,13 @@ class App extends Component {
           <Button type="primary" onClick={this.props.logout}>Logout</Button>
         </Header>
         <Content>
-          <section className="cards">
-            { this.state.cards.map((card) =>
-              <BookmarkCard data={card} key={card.id} />
-            )}
-          </section>
+          { this.props.bookmarks &&
+            <section className="cards">
+              { this.props.bookmarks.map((card) =>
+                <BookmarkCard data={card} key={card.id} />
+              )}
+            </section>
+          }
         </Content>
         <Footer className="footer">Shortcut.io © 2019 Created by | <a href="/imprint">Imprint</a></Footer>
       </Layout>
