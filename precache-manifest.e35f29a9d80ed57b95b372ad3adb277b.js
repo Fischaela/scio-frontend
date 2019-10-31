@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c00457d41b61f9de67bc3a07609fe66a",
+    "revision": "00aeac3e168bef1f86e1e1def57a1420",
     "url": "/scio-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/scio-frontend/static/css/2.656a76cb.chunk.css"
   },
   {
-    "revision": "93454b582751634cbef5",
+    "revision": "f580d781d93a4d2c7d8e",
     "url": "/scio-frontend/static/css/main.c8983587.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/scio-frontend/static/js/2.4d5942e3.chunk.js"
   },
   {
-    "revision": "93454b582751634cbef5",
-    "url": "/scio-frontend/static/js/main.50b1ba84.chunk.js"
+    "revision": "f580d781d93a4d2c7d8e",
+    "url": "/scio-frontend/static/js/main.a07e48ca.chunk.js"
   },
   {
     "revision": "b739cadc00d6a70b41ee",

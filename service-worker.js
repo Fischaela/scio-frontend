@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/scio-frontend/precache-manifest.1755144b66bab9055edcefa969075ab7.js"
+  "/scio-frontend/precache-manifest.e35f29a9d80ed57b95b372ad3adb277b.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/scio-frontend/static/css/main.c8983587.chunk.css",
-    "main.js": "/scio-frontend/static/js/main.50b1ba84.chunk.js",
-    "main.js.map": "/scio-frontend/static/js/main.50b1ba84.chunk.js.map",
+    "main.js": "/scio-frontend/static/js/main.a07e48ca.chunk.js",
+    "main.js.map": "/scio-frontend/static/js/main.a07e48ca.chunk.js.map",
     "runtime-main.js": "/scio-frontend/static/js/runtime-main.b7cb74cc.js",
     "runtime-main.js.map": "/scio-frontend/static/js/runtime-main.b7cb74cc.js.map",
     "static/css/2.656a76cb.chunk.css": "/scio-frontend/static/css/2.656a76cb.chunk.css",
     "static/js/2.4d5942e3.chunk.js": "/scio-frontend/static/js/2.4d5942e3.chunk.js",
     "static/js/2.4d5942e3.chunk.js.map": "/scio-frontend/static/js/2.4d5942e3.chunk.js.map",
     "index.html": "/scio-frontend/index.html",
-    "precache-manifest.1755144b66bab9055edcefa969075ab7.js": "/scio-frontend/precache-manifest.1755144b66bab9055edcefa969075ab7.js",
+    "precache-manifest.e35f29a9d80ed57b95b372ad3adb277b.js": "/scio-frontend/precache-manifest.e35f29a9d80ed57b95b372ad3adb277b.js",
     "service-worker.js": "/scio-frontend/service-worker.js",
     "static/css/2.656a76cb.chunk.css.map": "/scio-frontend/static/css/2.656a76cb.chunk.css.map",
     "static/css/main.c8983587.chunk.css.map": "/scio-frontend/static/css/main.c8983587.chunk.css.map"
@@ -19,6 +19,6 @@
     "static/css/2.656a76cb.chunk.css",
     "static/js/2.4d5942e3.chunk.js",
     "static/css/main.c8983587.chunk.css",
-    "static/js/main.50b1ba84.chunk.js"
+    "static/js/main.a07e48ca.chunk.js"
   ]
 }
