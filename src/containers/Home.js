@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import './Home.css'
 
 import { login, logout, register } from '../actions/SessionActions'
-import { addBookmark, getBookmarks } from '../actions/BookmarksActions'
+import { addBookmark, getBookmarks, updateBookmark } from '../actions/BookmarksActions'
 import { getTags } from '../reducers/BookmarksReducer'
 import App from './App'
 import Login from '../components/Login'
@@ -38,6 +38,7 @@ class Home extends Component {
           <App
             addBookmark={this.props.addBookmark}
             newBookmarkState={this.props.newBookmarkState}
+            updateBookmark={this.props.updateBookmark}
             bookmarks={this.props.bookmarks}
             logout={this.props.handleLogout}
             tags={this.props.tags}
@@ -58,6 +59,7 @@ Home.propTypes = {
   handleRegister: PropTypes.func,
   sessionState: PropTypes.string,
   tags: PropTypes.array,
+  updateBookmark: PropTypes.func,
 }
 
 Home.defaultProps = {
@@ -70,6 +72,7 @@ Home.defaultProps = {
   handleRegister: undefined,
   sessionState: 'UNKNOWN',
   tags: undefined,
+  updateBookmark: undefined,
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -88,6 +91,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleRegister: (email, username, password) => {
     dispatch(register(email, username, password))
+  },
+  updateBookmark: (bookmark) => {
+    console.log('2', bookmark)
+    dispatch(updateBookmark(bookmark))
   },
 })
 

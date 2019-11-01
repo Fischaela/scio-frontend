@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Tag, Typography } from 'antd';
+import { Button, Card, Icon, Tag, Typography } from 'antd';
 
 import './BookmarkCard.css';
 
@@ -25,6 +25,9 @@ class BookmarkCard extends Component {
         { this.props.data.tags.map((tag) =>
           <Tag color={'magenta'} key={tag}>{tag}</Tag>
         )}
+        <Button className="card__edit" onClick={(e) => this.props.edit(e, this.props.data)} type="link">
+          <Icon type="edit" />
+        </Button>
       </Card>
     );
   }

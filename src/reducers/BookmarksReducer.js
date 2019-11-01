@@ -5,6 +5,9 @@ import {
   GETTING_BOOKMARKS_ERROR,
   GETTING_BOOKMARKS_IN_PROGRESS,
   GETTING_BOOKMARKS_SUCCESS,
+  UPDATE_BOOKMARK_ERROR,
+  UPDATE_BOOKMARK_IN_PROGRESS,
+  UPDATE_BOOKMARK_SUCCESS,
 } from './types'
 
 const defaultStore = {
@@ -27,6 +30,12 @@ const reducer = (store = defaultStore, action) => {
     return { ...store, bookmarksState: GETTING_BOOKMARKS_SUCCESS, bookmarks: action.payload }
   case 'GET_BOOKMARKS_ERROR':
     return { ...store, bookmarksState: GETTING_BOOKMARKS_ERROR }
+  case 'UPDATE_BOOKMARK_REQUEST':
+    return { ...store, newBookmarkState: UPDATE_BOOKMARK_IN_PROGRESS }
+  case 'UPDATE_BOOKMARK_SUCCESS':
+    return { ...store, newBookmarkState: UPDATE_BOOKMARK_SUCCESS }
+  case 'UPDATE_BOOKMARK_ERROR':
+    return { ...store, newBookmarkState: UPDATE_BOOKMARK_ERROR }
   default:
     return { ...store }
   }

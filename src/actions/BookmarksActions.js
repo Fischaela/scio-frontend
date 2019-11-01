@@ -6,6 +6,9 @@ import {
   GET_BOOKMARKS_ERROR,
   GET_BOOKMARKS_REQUEST,
   GET_BOOKMARKS_SUCCESS,
+  UPDATE_BOOKMARK_ERROR,
+  UPDATE_BOOKMARK_REQUEST,
+  UPDATE_BOOKMARK_SUCCESS,
 } from './types'
 
 export const createBookmarkRequest = () => ({
@@ -33,6 +36,18 @@ export const getBookmarksError = () => ({
   type: GET_BOOKMARKS_ERROR,
 })
 
+export const updateBookmarkRequest = () => ({
+  type: UPDATE_BOOKMARK_REQUEST,
+})
+
+export const updateBookmarkSuccess = () => ({
+  type: UPDATE_BOOKMARK_SUCCESS,
+})
+
+export const updateBookmarkError = () => ({
+  type: UPDATE_BOOKMARK_ERROR,
+})
+
 /**
  * ASYNC ACTIONS
  */
@@ -54,7 +69,6 @@ export const addBookmark = (bookmark) => {
         'content-type': 'application/json',
       },
       method: 'POST',
-      mode: 'no-cors',
     })
       .then(() => {
         return dispatch(createBookmarkSuccess())
@@ -87,6 +101,37 @@ export const getBookmarks = () => {
       .catch((error) => {
         console.log(error)
         dispatch(getBookmarksError(error))
+      })
+  }
+}
+
+export const updateBookmark = (bookmark) => {
+  return (dispatch) => {
+    dispatch(updateBookmarkRequest())
+    const data = {
+      description: bookmark.description,
+      title: bookmark.title,
+      url: bookmark.url,
+      tags: bookmark.tags || [],
+    }
+    return fetch(`${API_URL}/shortcuts/${bookmark.id}`, {
+      body: JSON.stringify(data),
+      'cache-control': 'no-cache',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'PUT',
+    })
+      .then(() => {
+        return dispatch(updateBookmarkSuccess())
+      })
+      .then(() => {
+        return dispatch(getBookmarks())
+      })
+      .catch((error) => {
+        console.log(error)
+        dispatch(updateBookmarkError(error))
       })
   }
 }

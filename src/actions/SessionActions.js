@@ -72,7 +72,6 @@ export const login = (emailAddress, password) => {
         'content-type': 'application/json',
       },
       method: 'POST',
-      mode: 'no-cors',
     })
       .then(() => (
         dispatch(getBookmarks())
@@ -102,7 +101,6 @@ export const register = (emailAddress, username, password) => {
         'content-type': 'application/json',
       },
       method: 'POST',
-      mode: 'no-cors',
     })
       .then((response) => (
         response.json()

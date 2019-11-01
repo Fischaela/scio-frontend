@@ -14,25 +14,20 @@ class Login extends Component {
       showRegister: false,
       username: '',
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
-    this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
   }
 
-  handleChange(event, type) {
+  handleChange = (event, type) => {
     this.setState({
       [type]: event.target.value,
     })
   }
 
-  handleSubmitLogin(event) {
-    console.log('A name was submitted: ' + this.state.email, this.state.password)
+  handleSubmitLogin = (event) => {
     event.preventDefault()
     this.props.login(this.state.email, this.state.password)
   }
 
-  handleSubmitRegister(event) {
-    console.log('A name was submitted: ' + this.state.email, this.state.username, this.state.password)
+  handleSubmitRegister = (event) => {
     event.preventDefault()
     this.props.register(this.state.email, this.state.username, this.state.password)
   }
@@ -103,7 +98,7 @@ class Login extends Component {
               }
             </Form.Item>
           </Form>
-          <Text className="login__main__footer">Shortcut.io © 2019 | <a href="/imprint">Imprint</a></Text>
+          <Text className="login__main__footer">Shortcut.io © 2019 | <Button type="link">Imprint</Button></Text>
         </section>
         <section className="login__aside"></section>
       </div>
