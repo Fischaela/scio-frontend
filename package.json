@@ -1,6 +1,6 @@
 {
   "name": "a-scio-frontend",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://fischaela.github.io/scio-frontend",
   "private": true,
   "dependencies": {
