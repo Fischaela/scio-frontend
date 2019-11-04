@@ -25,9 +25,14 @@ class BookmarkCard extends Component {
         { this.props.data.tags.map((tag) =>
           <Tag color={'magenta'} key={tag}>{tag}</Tag>
         )}
-        <Button className="card__edit" onClick={(e) => this.props.edit(e, this.props.data)} type="link">
-          <Icon type="edit" />
-        </Button>
+        <section className="card__actions">
+          <Button className="card__actions__delete" onClick={(e) => this.props.delete(e, this.props.data)} type="link">
+            <Icon type="delete" />
+          </Button>
+          <Button className="card__actions__edit" onClick={(e) => this.props.edit(e, this.props.data)} type="link">
+            <Icon type="edit" />
+          </Button>
+        </section>
       </Card>
     );
   }

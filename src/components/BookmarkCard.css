@@ -12,6 +12,30 @@
   margin-bottom: 0.5rem;
 }
 
+.card__actions {
+  background-color: rgba(255,255,255,0.2);
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.275s ease-in-out 0.375s;  
+}
+.card:hover .card__actions {
+  opacity: 1;
+}
+
+.card__actions__delete,
+.card__actions__edit {
+  padding: 0 8px;
+}
+.card__actions__delete:hover,
+.card__actions__edit:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
 .card__cover {
   background-color: #0c103e;
   background-size: cover;
@@ -20,23 +44,6 @@
 
 .card__description {
   margin: 0;
-}
-
-.card__edit {
-  background-color: rgba(255,255,255,0.2);
-  margin: 0 4px;
-  padding: 0 8px;
-  position: absolute;
-  top: 0.25rem;
-  right: 0;
-  opacity: 0;
-  transition: opacity 0.375s 0.375s ease-in-out;
-}
-.card__edit:hover {
-  background-color: rgba(255,255,255,0.2);
-}
-.card:hover .card__edit {
-  opacity: 1;
 }
 
 .card__title {

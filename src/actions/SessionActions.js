@@ -10,6 +10,7 @@ import {
   SESSION_ERROR,
   SET_SESSION_STATE,
 } from './types'
+import { handleApiErrors } from '../helpers'
 
 import {
   SCIO_LOCALSTORAGE_ID,
@@ -73,9 +74,10 @@ export const login = (emailAddress, password) => {
       },
       method: 'POST',
     })
-      .then(() => (
-        dispatch(getBookmarks())
-      ))
+      .then((response) => {
+        handleApiErrors(response)
+        return dispatch(getBookmarks())
+      })
       .then(() => {
         localStorage.setItem(SCIO_LOCALSTORAGE_ID, 'LOGGED_IN')
         return dispatch(loginSuccess())
@@ -102,9 +104,10 @@ export const register = (emailAddress, username, password) => {
       },
       method: 'POST',
     })
-      .then((response) => (
-        response.json()
-      ))
+      .then((response) => {
+        handleApiErrors(response)
+        return response.json()
+      })
       .then((json) => (
         dispatch(registerSuccess(json))
       ))

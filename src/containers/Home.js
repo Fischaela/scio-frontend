@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import './Home.css'
 
 import { login, logout, register } from '../actions/SessionActions'
-import { addBookmark, getBookmarks, updateBookmark } from '../actions/BookmarksActions'
+import { addBookmark, deleteBookmark, getBookmarks, updateBookmark } from '../actions/BookmarksActions'
 import { getTags } from '../reducers/BookmarksReducer'
 import App from './App'
 import Login from '../components/Login'
@@ -37,6 +37,7 @@ class Home extends Component {
         { this.props.sessionState === 'LOGGED_IN' &&
           <App
             addBookmark={this.props.addBookmark}
+            deleteBookmark={this.props.deleteBookmark}
             newBookmarkState={this.props.newBookmarkState}
             updateBookmark={this.props.updateBookmark}
             bookmarks={this.props.bookmarks}
@@ -51,6 +52,7 @@ class Home extends Component {
 
 Home.propTypes = {
   addBookmark: PropTypes.func,
+  deleteBookmark: PropTypes.func,
   newBookmarkState: PropTypes.string,
   bookmarks: PropTypes.array,
   getBookmarks: PropTypes.func,
@@ -64,6 +66,7 @@ Home.propTypes = {
 
 Home.defaultProps = {
   addBookmark: undefined,
+  deleteBookmark: undefined,
   newBookmarkState: 'UNKNOWN',
   bookmarks: null,
   getBookmarks: undefined,
@@ -77,8 +80,10 @@ Home.defaultProps = {
 
 const mapDispatchToProps = (dispatch) => ({
   addBookmark: (bookmark) => {
-    console.log('2', bookmark)
     dispatch(addBookmark(bookmark))
+  },
+  deleteBookmark: (id) => {
+    dispatch(deleteBookmark(id))
   },
   getBookmarks: () => {
     dispatch(getBookmarks())
@@ -93,7 +98,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(register(email, username, password))
   },
   updateBookmark: (bookmark) => {
-    console.log('2', bookmark)
     dispatch(updateBookmark(bookmark))
   },
 })

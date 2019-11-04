@@ -1,15 +1,16 @@
 import { API_URL } from '../config'
+import { sessionError } from './SessionActions'
 import {
   CREATE_BOOKMARK_REQUEST,
   CREATE_BOOKMARK_SUCCESS,
-  CREATE_BOOKMARK_ERROR,
-  GET_BOOKMARKS_ERROR,
+  DELETE_BOOKMARK_REQUEST,
+  DELETE_BOOKMARK_SUCCESS,
   GET_BOOKMARKS_REQUEST,
   GET_BOOKMARKS_SUCCESS,
-  UPDATE_BOOKMARK_ERROR,
   UPDATE_BOOKMARK_REQUEST,
   UPDATE_BOOKMARK_SUCCESS,
 } from './types'
+import { handleApiErrors } from '../helpers'
 
 export const createBookmarkRequest = () => ({
   type: CREATE_BOOKMARK_REQUEST,
@@ -19,8 +20,12 @@ export const createBookmarkSuccess = () => ({
   type: CREATE_BOOKMARK_SUCCESS,
 })
 
-export const createBookmarkError = () => ({
-  type: CREATE_BOOKMARK_ERROR,
+export const deleteBookmarkRequest = () => ({
+  type: DELETE_BOOKMARK_REQUEST,
+})
+
+export const deleteBookmarkSuccess = () => ({
+  type: DELETE_BOOKMARK_SUCCESS,
 })
 
 export const getBookmarksRequest = () => ({
@@ -32,20 +37,12 @@ export const getBookmarksSuccess = (json) => ({
   type: GET_BOOKMARKS_SUCCESS,
 })
 
-export const getBookmarksError = () => ({
-  type: GET_BOOKMARKS_ERROR,
-})
-
 export const updateBookmarkRequest = () => ({
   type: UPDATE_BOOKMARK_REQUEST,
 })
 
 export const updateBookmarkSuccess = () => ({
   type: UPDATE_BOOKMARK_SUCCESS,
-})
-
-export const updateBookmarkError = () => ({
-  type: UPDATE_BOOKMARK_ERROR,
 })
 
 /**
@@ -70,15 +67,39 @@ export const addBookmark = (bookmark) => {
       },
       method: 'POST',
     })
-      .then(() => {
+      .then((response) => {
+        handleApiErrors(response)
         return dispatch(createBookmarkSuccess())
       })
       .then(() => {
         return dispatch(getBookmarks())
       })
       .catch((error) => {
-        console.log(error)
-        dispatch(createBookmarkError(error))
+        dispatch(sessionError(error))
+      })
+  }
+}
+
+export const deleteBookmark = (bookmarkId) => {
+  return (dispatch) => {
+    dispatch(deleteBookmarkRequest())
+    return fetch(`${API_URL}/shortcuts/${bookmarkId}`, {
+      'cache-control': 'no-cache',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'DELETE',
+    })
+      .then((response) => {
+        handleApiErrors(response)
+        return dispatch(deleteBookmarkSuccess())
+      })
+      .then(() => {
+        return dispatch(getBookmarks())
+      })
+      .catch((error) => {
+        dispatch(sessionError(error))
       })
   }
 }
@@ -92,15 +113,14 @@ export const getBookmarks = () => {
       method: 'GET',
     })
       .then(response => {
+        handleApiErrors(response)
         return response.json()
       })
       .then((json) => {
-        console.log(json)
         return dispatch(getBookmarksSuccess(json))
       })
       .catch((error) => {
-        console.log(error)
-        dispatch(getBookmarksError(error))
+        dispatch(sessionError(error))
       })
   }
 }
@@ -123,15 +143,15 @@ export const updateBookmark = (bookmark) => {
       },
       method: 'PUT',
     })
-      .then(() => {
+      .then((response) => {
+        handleApiErrors(response)
         return dispatch(updateBookmarkSuccess())
       })
       .then(() => {
         return dispatch(getBookmarks())
       })
       .catch((error) => {
-        console.log(error)
-        dispatch(updateBookmarkError(error))
+        dispatch(sessionError(error))
       })
   }
 }

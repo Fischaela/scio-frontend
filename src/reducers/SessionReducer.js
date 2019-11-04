@@ -13,6 +13,7 @@ import {
 } from '../config'
 
 const defaultStore = {
+  sessionError: null,
   state: UNKNOWN,
 }
 
@@ -36,7 +37,8 @@ const reducer = (store = defaultStore, action) => {
   case 'REGISTER_REQUEST':
     return {...store, state: REGISTRATION_IN_PROGRESS}
   case 'SESSION_ERROR':
-    return {...store, state: INVALID}
+    localStorage.setItem(SCIO_LOCALSTORAGE_ID, 'LOGGED_OUT')
+    return {...store, state: INVALID, sessionError: action.payload}
   case 'SET_SESSION_STATE':
     return {...store, state: action.payload}
   default:

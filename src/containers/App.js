@@ -51,6 +51,12 @@ class App extends Component {
       modalVisible: false,
     })
   }
+  
+  handleCardDelete = (e, bookmark) => {
+    e.preventDefault()
+    e.stopPropagation()
+    this.props.deleteBookmark(bookmark.id)
+  }
 
   handleCardEdit = (e, bookmark) => {
     e.preventDefault()
@@ -163,7 +169,7 @@ class App extends Component {
           <Button type="primary" onClick={this.props.logout}>Logout</Button>
         </Header>
         <Content className="app__content">
-          { this.props.bookmarks &&
+          { (this.props.bookmarks && this.props.bookmarks.length) &&
             <Masonry
               breakpointCols={breakpointColumnsObj}
               className="cards"
@@ -172,6 +178,7 @@ class App extends Component {
               { this.props.bookmarks.map((card) =>
                 <BookmarkCard
                   data={card}
+                  delete={this.handleCardDelete}
                   edit={this.handleCardEdit}
                   handleClick={this.handleBookmarkClick}
                   key={card.id}

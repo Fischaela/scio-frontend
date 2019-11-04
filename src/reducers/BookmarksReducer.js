@@ -44,7 +44,7 @@ const reducer = (store = defaultStore, action) => {
 // Selector functions
 export const getTags = (state) => {
   let tags = []
-  if (state.Bookmarks && state.Bookmarks.bookmarks) {
+  if (state.Bookmarks && state.Bookmarks.bookmarks && state.Bookmarks.bookmarks.length) {
     for (const bookmark of state.Bookmarks.bookmarks) {
       for (const tag of bookmark.tags) {
         tags.push(tag)
