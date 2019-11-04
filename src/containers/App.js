@@ -1,12 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Masonry from 'react-masonry-css'
 
-import { Button, Layout, Modal } from 'antd';
+import { Button, Icon, Layout, Modal } from 'antd'
 
-import './App.css';
+import './App.css'
 import BookmarkCard from '../components/BookmarkCard'
 import BookmarkForm from '../components/BookmarkForm'
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content, Footer } = Layout
+const breakpointColumnsObj = {
+  default: 7,
+  1500: 6,
+  1300: 5,
+  1100: 4,
+  900: 3,
+  700: 2,
+  500: 1
+}
 
 class App extends Component {
   constructor(props) {
@@ -48,7 +58,6 @@ class App extends Component {
     this.setState({ inEditMode: true }, () => {
       this.showModal('Edit bookmark', bookmark)
     })
-    
   }
 
   handleTagChange = selectedItems => {
@@ -58,7 +67,6 @@ class App extends Component {
   handleOk = e => {
     e.preventDefault()
     this.setState({ confirmLoading: true })
-    console.log('3', this.state.inEditMode)
     if (!this.state.inEditMode) {
       this.props.addBookmark({
         description: this.state.newBookmarkDescription,
@@ -74,10 +82,9 @@ class App extends Component {
           newBookmarkTitle: '',
           newBookmarkUrl: '',
           selectedItems: [],
-        });
-      }, 500);
+        })
+      }, 500)
     } else {
-      console.log('Edit')
       this.props.updateBookmark({
         id: this.state.newBookmarkId,
         description: this.state.newBookmarkDescription,
@@ -94,13 +101,12 @@ class App extends Component {
           newBookmarkTitle: '',
           newBookmarkUrl: '',
           selectedItems: [],
-        });
-      }, 500);
+        })
+      }, 500)
     }
   }
 
   showModal = (title, newBookmark) => {
-    console.log('4', title, newBookmark, this.state.inEditMode)
     if (title) {
       this.setState({
         modalTitle: title,
@@ -156,9 +162,13 @@ class App extends Component {
           <Button type="primary" onClick={() => this.showModal('Add new bookmark')}>New Bookmark</Button>
           <Button type="primary" onClick={this.props.logout}>Logout</Button>
         </Header>
-        <Content>
+        <Content className="app__content">
           { this.props.bookmarks &&
-            <section className="cards">
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className="cards"
+              columnClassName="cards__card"
+            >
               { this.props.bookmarks.map((card) =>
                 <BookmarkCard
                   data={card}
@@ -167,13 +177,13 @@ class App extends Component {
                   key={card.id}
                 />
               )}
-            </section>
+            </Masonry>
           }
         </Content>
         <Footer className="footer">Shortcut.io © 2019 | <a href="/imprint">Imprint</a></Footer>
       </Layout>
-    );
+    )
   }
 }
 
-export default App;
+export default App

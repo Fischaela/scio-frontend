@@ -9,8 +9,7 @@
 
 .card {
   color: #0c103e;
-  margin: 0.5rem;
-  position: relative;
+  margin-bottom: 0.5rem;
 }
 
 .card__cover {
@@ -48,4 +47,5 @@
 .card__url {
   color: #0c103e;
   margin-bottom: 0.5rem !important;
+  word-break: break-all;
 }
