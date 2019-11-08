@@ -6,7 +6,7 @@ import './Home.css'
 
 import { login, logout, register } from '../actions/SessionActions'
 import { addBookmark, deleteBookmark, getBookmarks, updateBookmark } from '../actions/BookmarksActions'
-import { getTags } from '../reducers/BookmarksReducer'
+import { getTags, getTagsObject } from '../reducers/BookmarksReducer'
 import App from './App'
 import Login from '../components/Login'
 
@@ -43,6 +43,7 @@ class Home extends Component {
             bookmarks={this.props.bookmarks}
             logout={this.props.handleLogout}
             tags={this.props.tags}
+            tagsObject={this.props.tagsObject}
           />
         }
       </div>
@@ -61,6 +62,7 @@ Home.propTypes = {
   handleRegister: PropTypes.func,
   sessionState: PropTypes.string,
   tags: PropTypes.array,
+  tagsObject: PropTypes.object,
   updateBookmark: PropTypes.func,
 }
 
@@ -75,6 +77,7 @@ Home.defaultProps = {
   handleRegister: undefined,
   sessionState: 'UNKNOWN',
   tags: undefined,
+  tagsObject: undefined,
   updateBookmark: undefined,
 }
 
@@ -107,6 +110,7 @@ const mapStateToProps = (state) => ({
   newBookmarkState: state.Bookmarks.newBookmarkState,
   sessionState: state.Session.state,
   tags: getTags(state),
+  tagsObject: getTagsObject(state),
 })
 
 export default connect(

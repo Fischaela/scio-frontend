@@ -55,4 +55,26 @@ export const getTags = (state) => {
   return(tags)
 }
 
+export const getTagsObject = (state) => {
+  let tagsArray = []
+  let tags = {}
+  if (state.Bookmarks && state.Bookmarks.bookmarks && state.Bookmarks.bookmarks.length) {
+    for (const bookmark of state.Bookmarks.bookmarks) {
+      for (const bookmarkTag of bookmark.tags) {
+        tagsArray.push(bookmarkTag)
+      }
+    }
+    for (const tag of tagsArray) {
+      if (tags[tag]) {
+        tags[tag].count +=1
+      } else {
+        tags[tag] = {}
+        tags[tag].count = 1
+        tags[tag].name = tag
+      }
+    }
+  }
+  return(tags)
+}
+
 export default reducer

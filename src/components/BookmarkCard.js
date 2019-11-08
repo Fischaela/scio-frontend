@@ -20,11 +20,7 @@ class BookmarkCard extends Component {
         cover={<div alt="example" className="card__cover" style={screenshotUrl ? {backgroundImage: `url(${screenshotUrl})`} : {backgroundImage: 'none'}}></div>}
       >
         <p className="card__title">{this.props.data.title}</p>
-        <p className="card__description">{this.props.data.description}</p>
         <Paragraph copyable className="card__url">{this.props.data.url}</Paragraph>
-        { this.props.data.tags.map((tag) =>
-          <Tag color={'magenta'} key={tag}>{tag}</Tag>
-        )}
         <section className="card__actions">
           <Button className="card__actions__delete" onClick={(e) => this.props.delete(e, this.props.data)} type="link">
             <Icon type="delete" />

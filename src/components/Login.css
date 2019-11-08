@@ -1,3 +1,7 @@
+.ant-input {
+  color: #383838;
+}
+
 .ant-form-item {
   margin-bottom: 1rem;
 }
@@ -8,7 +12,7 @@
 }
 
 .login__aside {
-  background-color: #0c103e;
+  background-color: #c58300;
   flex-grow: 1;
 }
 
@@ -27,7 +31,8 @@
 
 .login__main {
   align-items: center;
-  background-color: #ecf1f5;
+  background-color: #222222;
+  color: #bdbdbd;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,4 +45,8 @@
 .login__main__footer {
   position: absolute;
   bottom: 1rem;
+}
+
+.login__title {
+  color: #bdbdbd !important;
 }

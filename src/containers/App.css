@@ -4,18 +4,18 @@
 }
 
 .app__content {
-  margin: 1rem;
+  margin: 1rem 1rem 1rem 1rem;
 }
 
 @media screen and (min-width: 500px) {
   .app__content {
-    margin: 1rem 2rem;
+    margin:  1rem 2rem 1rem 2rem;
   }
 }
 
 @media screen and (min-width: 700px) {
   .app__content {
-    margin: 1rem 3.125rem 3.125rem 3.125rem;
+    margin: 3.125rem 3.125rem 3.125rem 3.125rem;
   }
 }
 
@@ -41,7 +41,64 @@
 }
 
 .header {
+  background-color: #222222;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.sider {
+  background-color: #323232;
+  padding: 2rem 0;
+}
+
+.sider__button {
+  margin: 0 1rem;
+}
+
+.sider__item {
+  padding: 0 0 3rem 0;
+}
+
+.sider__list {
+  list-style: none;
+  padding: 0;
+}
+
+.sider__list__item {
+  color: #dddddd;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.sider__list__item--active,
+.sider__list__item:hover {
+  background-color: #505050;
+  color: #ffffff;
+}
+
+.sider__list__item__counter {
+  align-items: center;
+  border-radius: 50%;
+  color: #8c8c8c;
+  display: flex;
+  font-size: 0.75rem;
+  justify-content: center;
+  line-height: 1em;
+  width: 20px;
+  height: 20px;
+}
+
+.sider__list__item--active .sider__list__item__counter {
+  background-color: #c58300;
+  color: #ffffff;
+}
+
+.sider__title {
+  color: #979797;
+  font-size: 0.75rem;
+  margin: 0 1rem 1rem 1rem;
 }

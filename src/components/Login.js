@@ -42,7 +42,7 @@ class Login extends Component {
     return (
       <div className="login">
         <section className="login__main">
-          <Title level={1}>Welcome to Shortcut.io</Title>
+          <Title className="login__title" level={1}>Welcome to Shortcut.io</Title>
           <Form className="login__form">
             <Form.Item>
               <Input
