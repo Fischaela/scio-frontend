@@ -63,10 +63,15 @@
 .card__title {
   font-weight: 800;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card__url {
   color: #c58300;
-  margin-bottom: 0.5rem !important;
-  word-break: break-all;
+  margin-bottom: 0 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
