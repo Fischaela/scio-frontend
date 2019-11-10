@@ -16,7 +16,7 @@ const breakpointColumnsObj = {
   1200: 4,
   1000: 3,
   800: 2,
-  600: 1
+  450: 1
 }
 
 class App extends Component {
@@ -34,6 +34,7 @@ class App extends Component {
       newBookmarkId: '',
       newBookmarkTitle: '',
       newBookmarkUrl: '',
+      siderHidden: true,
       visibleBookmarks: [],
     }
   }
@@ -191,6 +192,12 @@ class App extends Component {
     })
   }
 
+  toggleSider = () => {
+    this.setState({
+      siderHidden: !this.state.siderHidden,
+    })
+  }
+
   render() {
     const filteredOptions = this.props.tags.filter(o => !this.state.selectedTags.includes(o))
 
@@ -216,7 +223,15 @@ class App extends Component {
             }}
           />
         </Modal>
-        <Sider className="sider">
+        <Sider className={this.state.siderHidden ? 'sider sider--hidden' : 'sider'}>
+          <Button className="sider__toggle" type="link" onClick={this.toggleSider}>
+            { this.state.siderHidden &&
+              <Icon type="menu-unfold" />
+            }
+            { !this.state.siderHidden &&
+              <Icon type="menu-fold" />
+            }
+          </Button>
           <div className="sider__item">
             <Button
               type="primary"

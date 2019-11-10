@@ -47,9 +47,40 @@
   justify-content: space-between;
 }
 
+.sider__toggle {
+  background-color: #323232 !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  position: absolute;
+  right: -50px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+}
+
 .sider {
   background-color: #323232;
+  min-height: 100vh;
   padding: 2rem 0;
+  position: absolute;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+.sider.sider--hidden {
+  transform: translateX(-100%);
+}
+
+@media screen and (min-width: 600px) {
+  .sider,
+  .sider.sider--hidden {
+    position: relative;
+    transform: translateX(0);
+  }
+
+  .sider__toggle {
+    display: none;
+  }
 }
 
 .sider__button {
