@@ -1,7 +1,7 @@
 {
   "name": "a-scio-frontend",
-  "version": "0.2.1",
-  "homepage": "https://fischaela.github.io/scio-frontend",
+  "version": "0.2.2",
+  "homepage": "https://shortcut.io",
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
