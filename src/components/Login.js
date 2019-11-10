@@ -22,20 +22,19 @@ class Login extends Component {
     })
   }
 
-  handleSubmitLogin = (event) => {
-    event.preventDefault()
-    this.props.login(this.state.email, this.state.password)
-  }
-
-  handleSubmitRegister = (event) => {
-    event.preventDefault()
-    this.props.register(this.state.email, this.state.username, this.state.password)
-  }
-
   handleToggleRegister = () => {
     this.setState({
       showRegister: !this.state.showRegister,
     })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    if (this.state.showRegister) {
+      this.props.register(this.state.email, this.state.username, this.state.password)
+    } else {
+      this.props.login(this.state.email, this.state.password)
+    }
   }
 
   render() {
@@ -43,7 +42,7 @@ class Login extends Component {
       <div className="login">
         <section className="login__main">
           <Title className="login__title" level={1}>Welcome to Shortcut.io</Title>
-          <Form className="login__form">
+          <Form onSubmit={this.handleSubmit} className="login__form">
             <Form.Item>
               <Input
                 className="input"
@@ -77,9 +76,9 @@ class Login extends Component {
               { !this.state.showRegister &&
                 <div>
                   <Button
-                    onClick={this.handleSubmitLogin}
                     className="login__form__button"
                     type="primary"
+                    htmlType="submit"
                     value="submit"
                   >Sign in</Button>
                   Or <a onClick={this.handleToggleRegister}>sign up now!</a>
@@ -88,10 +87,10 @@ class Login extends Component {
               { this.state.showRegister &&
                 <div>
                   <Button
-                    onClick={this.handleSubmitRegister}
                     className="login__form__button"
                     type="primary"
                     value="submit"
+                    htmlType="submit"
                   >Sign up</Button>
                   Or <a onClick={this.handleToggleRegister}>sign in now!</a>
                 </div>
