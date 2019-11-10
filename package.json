@@ -1,6 +1,6 @@
 {
   "name": "a-scio-frontend",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://fischaela.github.io/scio-frontend",
   "private": true,
   "proxy": "http://localhost:8000",
