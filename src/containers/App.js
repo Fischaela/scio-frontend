@@ -268,21 +268,32 @@ class App extends Component {
         <Layout className="main">
           <Content className="app__content">
             { (this.state.visibleBookmarks && this.state.visibleBookmarks.length && this.state.visibleBookmarks.length > 0) &&
-              <Masonry
-                breakpointCols={breakpointColumnsObj}
-                className="cards"
-                columnClassName="cards__card"
-              >
-                { this.state.visibleBookmarks.map((card) =>
-                  <BookmarkCard
-                    data={card}
-                    delete={this.handleCardDelete}
-                    edit={this.handleCardEdit}
-                    handleClick={this.handleBookmarkClick}
-                    key={card.id}
-                  />
-                )}
-              </Masonry>
+              <section>
+                <Masonry
+                  breakpointCols={breakpointColumnsObj}
+                  className="cards"
+                  columnClassName="cards__card"
+                >
+                  { this.state.visibleBookmarks.map((card) =>
+                    <BookmarkCard
+                      data={card}
+                      delete={this.handleCardDelete}
+                      edit={this.handleCardEdit}
+                      handleClick={this.handleBookmarkClick}
+                      key={card.id}
+                    />
+                  )}
+                </Masonry>
+                { (this.props.timeStamps && this.props.timeStamps.length && this.props.timeStamps.length > 0) &&
+                  <section className="timeline">
+                    <ul className="timeline__list">
+                      { this.props.timeStamps.map((timestamp) => 
+                        <li className={`timeline__list__item timeline__list__item--${timestamp.bookmarks.length}`} key={timestamp.index}></li>
+                      )}
+                    </ul>
+                  </section>
+                }
+              </section>
             }
           </Content>
           <Footer className="footer">Shortcut.io © 2019 | <Button type="link" onClick={this.props.logout}>Logout</Button></Footer>

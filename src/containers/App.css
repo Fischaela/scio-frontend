@@ -27,7 +27,7 @@
 
 .cards {
   display: flex;
-  margin: 0.5rem 0.5rem 0.5rem 0; /* left gutter size offset */
+  margin: 0.5rem 6.5rem 0.5rem 0; /* left gutter size offset */
   width: auto;
 }
 
@@ -132,4 +132,65 @@
   color: #979797;
   font-size: 0.75rem;
   margin: 0 1rem 1rem 1rem;
+}
+
+.timeline {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100px;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.timeline__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline__list__item {
+  background-color: #585858;
+  margin-bottom: 2px;
+  width: 100%;
+}
+
+.timeline__list__item--1 {
+  height: 2px;
+}
+
+.timeline__list__item--2 {
+  height: 3px;
+}
+
+.timeline__list__item--3 {
+  height: 4px;
+}
+
+.timeline__list__item--4 {
+  height: 5px;
+}
+
+.timeline__list__item--5 {
+  height: 6px;
+}
+
+.timeline__list__item--6 {
+  height: 7px;
+}
+
+.timeline__list__item--7 {
+  height: 8px;
+}
+
+.timeline__list__item--8 {
+  height: 9px;
+}
+
+.timeline__list__item--9 {
+  height: 10px;
+}
+
+.timeline__list__item--10 {
+  height: 11px;
 }
