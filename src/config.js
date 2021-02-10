@@ -1,8 +1,8 @@
 export const API_URL_DEV = `http://localhost:8000/api`
-export const API_URL_PROD = `https://shortcut.io/api`
+export const API_URL_PROD = `https://shortcut.li/api`
 export const SCIO_LOCALSTORAGE_ID = `SCIO`
 export const URL_DEV = 'localhost:8000'
-export const URL_PROD = 'shortcut.io'
+export const URL_PROD = 'shortcut.li'
 
 const hostname = window && window.location && window.location.hostname
 
